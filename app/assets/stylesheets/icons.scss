@@ -1,0 +1,40 @@
+.heart {
+  padding-right: 0.4em;
+  padding-left: 2em;
+  position: relative;
+  color: red;
+}
+.heart:after{
+  font-family: 'FontAwesome';
+  content: "\f004";
+}
+
+.reply {
+  padding-left: 0.2em;
+  position: relative;
+  color: #1BD8D4;
+}
+.reply:after{
+  font-family: 'FontAwesome';
+  content: "\f112";
+}
+
+.retweet {
+  padding-right: 0.4em;
+  padding-left: 2em;
+  position: relative;
+  color: #BF7FBF;
+}
+.retweet:after{
+  font-family: 'FontAwesome';
+  content: "\f079";
+}
+
+
+.twitter {
+  color: #fff;
+}
+.twitter:after{
+  font-family: 'FontAwesome';
+  content: "\f099";``
+}
