@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   # GET /tweets
   def index
     @tweets = Tweet.all.order("created_at DESC")
@@ -22,6 +24,7 @@ class TweetsController < ApplicationController
   # POST /tweets
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.user_name = current_user.email
 
     if @tweet.save
       redirect_to tweets_path, notice: 'Tweet was successfully created.'
