@@ -43,19 +43,17 @@ class TweetsController < ApplicationController
     end
   end
 
-  # DELETE /tweets/1
-  def destroy
-    @tweet = Tweet.find(params[:id])
-    @tweet.destroy
-    redirect_to tweets_url, notice: 'Tweet was successfully destroyed.'
-  end
-
   # likes/hearts feature
   def upvote
     @tweet = Tweet.find(params[:id])
-    @tweet.votes.create(upvote:true)
+    if @tweet.not_voted_already?(current_user)
+      @tweet.votes.create(upvote: true, user: current_user)
+      redirect_to tweets_path
+    else
+      @tweet.votes.where(user: current_user).delete_all
+      redirect_to tweets_path
+    end
 
-    redirect_to tweets_path
   end
 
   private
