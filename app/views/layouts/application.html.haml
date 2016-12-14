@@ -33,6 +33,14 @@
               = link_to "Home", tweets_path
             %li{:class => "#{'active' if params[:controller] == 'New Tweet'}"}
               = link_to "New Tweet", new_tweet_path
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              - if user_signed_in?
+                = link_to destroy_user_session_path, method: :delete do
+                  %span.signout
+                  Sign out
+              - else
+                = link_to "Sign in", new_user_session_path
 
     .container
       - flash.each do |name, msg|
