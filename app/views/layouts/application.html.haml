@@ -34,7 +34,6 @@
             %li{:class => "#{'active' if params[:controller] == 'New Tweet'}"}
               = link_to "New Tweet", new_tweet_path
 
-
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

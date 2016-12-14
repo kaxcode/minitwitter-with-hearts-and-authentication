@@ -18,6 +18,6 @@
                 %p
                   %span.reply
                   %span.retweet
-                  = link_to upvote_tweet_path(tweet) do
+                  = link_to like_tweet_path(tweet) do
                     %span.heart
-                  = tweet.votes.count
+                  = tweet.hearts.count

@@ -44,13 +44,13 @@ class TweetsController < ApplicationController
   end
 
   # likes/hearts feature
-  def upvote
+  def like
     @tweet = Tweet.find(params[:id])
-    if @tweet.not_voted_already?(current_user)
-      @tweet.votes.create(upvote: true, user: current_user)
+    if @tweet.not_hearted_already?(current_user)
+      @tweet.hearts.create(user: current_user)
       redirect_to tweets_path
     else
-      @tweet.votes.where(user: current_user).delete_all
+      @tweet.hearts.where(user: current_user).delete_all
       redirect_to tweets_path
     end
 
